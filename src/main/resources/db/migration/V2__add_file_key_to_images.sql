@@ -1,0 +1,2 @@
+ALTER TABLE images
+ADD COLUMN file_key VARCHAR(255) NOT NULL;
