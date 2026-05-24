@@ -14,6 +14,7 @@ import com.kevin.zenvy.backend.user.model.User;
 import com.kevin.zenvy.backend.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,10 +27,12 @@ public class ReviewService {
     private final UserRepository userRepository;
     private final ReviewMapper reviewMapper;
 
-    public Review createReview(ReviewCreateDTO createDTO){
+    public Review createReview(ReviewCreateDTO createDTO, Authentication authentication){
         Place place = placeRepository.findById(createDTO.placeId()).orElseThrow(() -> new GeneralException("Place not found", HttpStatus.NOT_FOUND));
 
-        User user = userRepository.findById(createDTO.userId()).orElseThrow(() -> new GeneralException("User not found", HttpStatus.NOT_FOUND));
+        String email = authentication.getName();
+
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new GeneralException("User not found", HttpStatus.NOT_FOUND));
 
         boolean existsReview = reviewRepository.existsByUserAndPlace(user, place);
 
