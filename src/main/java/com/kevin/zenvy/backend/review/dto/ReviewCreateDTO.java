@@ -3,12 +3,11 @@ package com.kevin.zenvy.backend.review.dto;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record ReviewCreateDTO(
-        @NotNull(message = "The userId field is required")
-        Long userId,
+//        @NotNull(message = "The userId field is required")
+//        Long userId,
 
         @NotNull(message = "The placeId field is required")
         Long placeId,
