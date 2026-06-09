@@ -3,7 +3,7 @@ package com.kevin.zenvy.backend.common.storage;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-@Service
+//@Service
 public class TestStorageService implements StorageService{
     @Override
     public String upload(MultipartFile file, String fileKey) {
