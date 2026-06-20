@@ -1,5 +1,6 @@
 package com.kevin.zenvy.backend.review.model;
 
+import com.kevin.zenvy.backend.image.model.Image;
 import com.kevin.zenvy.backend.place.model.Place;
 import com.kevin.zenvy.backend.user.model.User;
 import jakarta.persistence.*;
@@ -11,6 +12,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -30,6 +33,9 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "place_id", nullable = false)
     private Place place;
+
+    @OneToMany(mappedBy = "review")
+    private List<Image> images = new ArrayList<>();
 
     @Min(1)
     @Max(5)
