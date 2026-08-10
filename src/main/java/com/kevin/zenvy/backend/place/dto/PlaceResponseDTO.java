@@ -4,6 +4,7 @@ import lombok.Builder;
 
 @Builder
 public record PlaceResponseDTO(
+        Long id,
         String name,
         String description,
         String category,
