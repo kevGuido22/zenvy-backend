@@ -25,6 +25,7 @@ public class PlaceController {
         Place place = placeService.addPlace(createDTO);
 
         PlaceResponseDTO placeResponseDTO = PlaceResponseDTO.builder()
+                .id(place.getId())
                 .name(place.getName())
                 .description(place.getDescription())
                 .category(place.getCategory())
