@@ -20,7 +20,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
-          role-to-assume: arn:aws:iam::879366471942:role/ZenvyGitHubActionsRole
+          role-to-assume: arn:aws:iam::879366471942:role/ZenvyGithubActionsRole
           aws-region: us-east-2
 
       - name: Login to Amazon ECR
