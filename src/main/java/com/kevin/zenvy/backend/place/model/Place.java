@@ -1,10 +1,13 @@
 package com.kevin.zenvy.backend.place.model;
 
+import com.kevin.zenvy.backend.image.model.Image;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -38,6 +41,9 @@ public class Place {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "place")
+    private List <Image> images  = new ArrayList<>();
 
     @PrePersist
     protected void onCreate(){

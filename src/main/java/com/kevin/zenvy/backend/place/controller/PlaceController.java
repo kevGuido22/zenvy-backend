@@ -38,25 +38,15 @@ public class PlaceController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Place>> getPlaces(){
-        List<Place> placeList = placeService.getPlaces();
+    public ResponseEntity<List<PlaceResponseDTO>> getPlaces(){
+        List<PlaceResponseDTO> placeList = placeService.getPlaces();
 
         return ResponseEntity.ok().body(placeList);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<PlaceResponseDTO> getPlace(@PathVariable Long id){
-        Place place = placeService.getPlace(id);
-        PlaceResponseDTO placeResponse = PlaceResponseDTO.builder()
-                .name(place.getName())
-                .description(place.getDescription())
-                .address(place.getAddress())
-                .city(place.getCity())
-                .category(place.getCategory())
-                .country(place.getCountry())
-                .build();
-
-        return ResponseEntity.ok().body(placeResponse);
+        return ResponseEntity.ok(placeService.getPlace(id));
     }
 
     @GetMapping("/{placeId}/reviews")
