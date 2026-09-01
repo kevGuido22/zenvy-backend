@@ -39,3 +39,11 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
           docker push $ECR_REGISTRY/zenvy/backend:latest
+
+      - name: Test SSM
+        run: |
+          aws ssm send-command \
+            --instance-ids i-0b558f42bb54aefcb \
+            --document-name "AWS-RunShellScript" \
+            --parameters 'commands=["mkdir -p /tmp/zenvy-ssm-test", "echo Created by GitHub Actions through SSM > /tmp/zenvy-ssm-test/test.txt"]' \
+            --region us-east-2
